@@ -1,2 +1,13 @@
-# effective-carnival
-AWS Orgs deployment for Commerical Accounts
+# Terraform AWS Organization Deployment #
+
+## What is AWS Organizations ##
+AWS Organizations helps you centrally govern your environment as you grow and scale your workloads on AWS. Whether you are a growing startup or a large enterprise, Organizations helps you to centrally manage billing; control access, compliance, and security; and share resources across your AWS accounts.
+
+## What is an AWS Organizational Unit ##
+An organizational unit (OU) is a group of AWS accounts within an organization. An OU can also contain other OUs enabling you to create a hierarchy. For example, you can group all accounts that belong to the same department into a departmental OU. Similarly, you can group all accounts running production services into a production OU. OUs are useful when you need to apply the same controls to a subset of accounts in your organization. Nesting OUs enables smaller units of management. For example, in a departmental OU, you can group accounts that belong to individual teams in team-level OUs. These OUs inherit the policies from the parent OU in addition to any controls assigned directly to the team-level OU.
+
+## What is a Service Control Policy ##
+Service Control Policies (SCPs) allow you to control which AWS service actions are accessible to principals (account root, IAM users, and IAM roles) in the accounts of your organization. An SCP is required but is not the only control that determines which principals in an account can access resources to grant principals in an account access to resources. The effective permission on a principal in an account that has an SCP attached is the intersection of what is allowed explicitly in the SCP and what is allowed explicitly in the permissions attached to the principal. For example, if an SCP applied to an account states that the only actions allowed are Amazon EC2 actions, and the permissions on a principal in the same AWS account allow both EC2 actions and Amazon S3 actions, the principal is able to access only the EC2 actions.
+
+## How is the Terraform formatted ##
+A module is a container for multiple resources that are used together.  Every Terraform configuration has at least one module, known as its root module, which consists of the resources defined in the .tf files in the main working directory.  A module can call other modules, which lets you include the child module's resources into the configuration in a concise way. Modules can also be called multiple times, either within the same configuration or in separate configurations, allowing resource configurations to be packaged and re-used.
